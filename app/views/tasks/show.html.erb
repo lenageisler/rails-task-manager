@@ -1,8 +1,23 @@
-<h1><%= @task.title %></h1>
-<p><%= @task.details %></p>
-<p><%= @task.completed %></p>
+<div class="container col-5">
+    <h1><%= @task.title %></h1>
+    <div class="form">
+        <div class="d-flex">
+            <p class="pe-3">Details:</p>
+            <p><%= @task.details %></p>
+        </div>
+        <div class="d-flex align-items-baseline">
+            <p class="pe-4">Done: </p>
+            <% if @task.completed? %>
+                <i class="fa-regular fa-square-check"></i>
+            <% else %>
+                <i class="fa-regular fa-square"></i>
+            <% end %>
+        </div>
+    </div>
 
-<%= link_to "Edit task", "/tasks/#{@task.id}/edit" %>
-<%= link_to "Delete task", task_path(@task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-
-<%= link_to "Back to list", tasks_path %>
+    <div class="d-flex justify-content-between align-items-baseline">
+        <%= link_to "   Back to list", tasks_path, class: "fa-solid fa-arrow-left link" %>
+        <%= link_to "", "/tasks/#{@task.id}/edit", class: "fa-solid fa-pen-to-square link" %>
+        <%= link_to "", task_path(@task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-solid fa-trash link" %>
+    </div>
+</div>

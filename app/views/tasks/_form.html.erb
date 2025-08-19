@@ -1,11 +1,17 @@
-<%= form_with model: task do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <%= f.label :details %>
-    <%= f.text_field :details %>
-    <% if task.persisted? %>
-        <%= f.label :completed %>
-        <%= f.text_field :completed %>
-    <% end %>    
-    <%= f.submit %>
+<%= form_with model: task, html: { class: "form" } do |f| %>
+    <div class="mb-3">
+        <%= f.label :title, class: "form-label" %>
+        <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+        <%= f.label :details, class: "form-label" %>
+        <%= f.text_field :details, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+        <%= f.check_box :completed, class: "form-check-input" %>    
+        <%= f.label :completed, class: "form-label" %>
+    </div>
+    <div class="mb-3">
+        <%= f.submit "Save", class: "btn btn-warning" %>
+    </div>
 <% end %>
